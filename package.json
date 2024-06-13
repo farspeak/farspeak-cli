@@ -1,0 +1,18 @@
+{
+    "name": "cli-farspeak",
+    "version": "1.0.0",
+    "description": "",
+    "main": "cli.js",
+    "type": "module",
+    "scripts": {
+      "start": "node cli.js",
+      "test": ""
+    },
+    "author": "Your Name",
+    "license": "ISC",
+    "dependencies": {
+      "farspeak": "^1.0.0", 
+      "path": "^0.12.7"
+    }
+  }
+  
