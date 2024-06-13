@@ -1,4 +1,4 @@
-# Farspeak Tool
+# Farspeak CLI Tool
 
 This tool uses the `farspeak` library to process and extract information from a scientific paper PDF document. The tool is written in Node.js and uses ES module syntax.
 
