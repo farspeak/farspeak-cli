@@ -37,7 +37,7 @@ This script uses the Farspeak library to process documents according to a templa
 
 ### Example Command
 
-    node cli.js --filename path/to/your/file.txt --template path/to/your/template.yaml --query 'your query here'
+    ./cli.js --filename path/to/your/file.txt --template path/to/your/template.yaml --query 'your query here'
     
 ### Example Output
 
