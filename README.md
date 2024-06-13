@@ -37,13 +37,10 @@ This script uses the Farspeak library to process documents according to a templa
 
 ### Example Command
 
-    ```
     node cli.js --filename path/to/your/file.txt --template path/to/your/template.yaml --query 'your query here'
-    ```
-
+    
 ### Example Output
 
-    ```
     ./cli.js --filename ./example.pdf --template ./template.yaml --query "Who is the author of this book?"
     {
       id: '86bv5c2a',
@@ -113,4 +110,4 @@ This script uses the Farspeak library to process documents according to a templa
       ],
       __meta: { self: '/test2/dev/papers/86bv5c2a', subtypes: {} }
     }
-    { answer: 'The author of the book is Prof. Dr. B. Pareigis.' }```
+    { answer: 'The author of the book is Prof. Dr. B. Pareigis.' }
