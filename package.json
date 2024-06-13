@@ -5,14 +5,15 @@
     "main": "cli.js",
     "type": "module",
     "scripts": {
-      "start": "node cli.js",
-      "test": ""
+        "start": "node cli.js",
+        "test": ""
     },
     "author": "Your Name",
     "license": "ISC",
     "dependencies": {
-      "farspeak": "^1.0.0", 
-      "path": "^0.12.7"
+        "commander": "^12.1.0",
+        "farspeak": "^1.0.0",
+        "path": "^0.12.7",
+        "yamljs": "^0.3.0"
     }
-  }
-  
+}

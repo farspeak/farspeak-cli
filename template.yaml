@@ -1,0 +1,7 @@
+instructions: "This is a scientific paper"
+template:
+  title: "Title of the scientific paper"
+  author: "Name of the author"
+  affiliation: "Author's affiliation, including institution and department"
+  email: "Email of the author"
+  sections: "List of sections in the paper"

@@ -1,41 +1,59 @@
 #!/usr/bin/env node
 
-//const farspeak = require('farspeak');
 import { Farspeak } from "farspeak";
 import path from "path";
-import assert from "assert";
-
 import { fileURLToPath } from 'url';
+import fs from 'fs';
+import YAML from 'yamljs';
 
-//const Farspeak = require("farspeak").Farspeak;
-
-const farspeak = new Farspeak({
-    app: "test2", // your app name
-    env: "dev", // your app env
-    backendToken: "sa79iett7le564", // paste your backend token
-  });
+import { Command } from 'commander';
 
 // Get the current file path and directory name
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const entityName = "papers";
+
+// Define CLI options using commander
+const program = new Command();
+program
+  .option('--filename <filename>', 'Path to the file to be sent to Farspeak')
+  .option('--template <path>', 'Path to the YAML file containing the instructions and template')
+  .option('--query <query>', 'Path to the YAML file containing the instructions and template')
+  .parse(process.argv);
+
+const options = program.opts();
+
+if (!options.filename || !options.template) {
+  console.error('Error: Both --filename and --template options are required');
+  process.exit(1);
+}
+
+// Load the instructions and template from the YAML file
+const templateFilePath = path.resolve(__dirname, options.template);
+const { instructions, template } = YAML.load(templateFilePath);
+
+const farspeak = new Farspeak({
+    app: "", // your app name
+    env: "", // your app env
+    backendToken: "", // paste your backend token
+});
+
 (async () => {
-    const filePath = path.resolve(__dirname, './example.pdf');
-    const instructions = "This is a scientific paper";
-    const template = {
-      title: "Title of the scientific paper",
-      author: "Name of the author",
-      affiliation: "Author's affiliation, including institution and department",
-      email: "Email of the author",
-      sections: "List of sections in the paper",
-    };
+    const filePath = path.resolve(__dirname, options.filename);
+
     const doc = await farspeak
-      .entity("papers")
+      .entity(entityName)
       .fromDocument({ filePath, instructions, template });
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    const entity = await farspeak.entity("papers").get(doc.id);
+    const entity = await farspeak.entity(entityName).get(doc.id);
+
+    farspeak
+      .entity(entityName)
+      .inquire(options.query)
+      .then(console.log);
 
     console.log(doc);
     console.log(entity);
 
-  })();
+})();
