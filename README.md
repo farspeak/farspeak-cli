@@ -9,11 +9,7 @@ This tool uses the `farspeak` library to process and extract information from a 
 
 ## Installation
 
-1. Clone the repository:
-    ```sh
-    git clone <repository-url>
-    cd <repository-name>
-    ```
+1. Clone the repository.
 
 2. Install the dependencies:
     ```sh
