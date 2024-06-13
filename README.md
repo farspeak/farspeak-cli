@@ -18,6 +18,14 @@ This script uses the Farspeak library to process documents according to a templa
     ```sh
     npm install
     ```
+3. Provide your app / env name as well as your backend token (you'll get them from farspeak.ai)    
+```
+const farspeak = new Farspeak({
+  app: "", // your app name
+  env: "", // your app env
+  backendToken: "", // paste your backend token
+});
+```
 
 ## Usage
 
