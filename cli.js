@@ -17,13 +17,13 @@ const farspeak = new Farspeak({
 
 // Farspeak setup
 //const farspeak = new Farspeak({
-  app: '', // your app name
-  env: '', // your app env
-  backendToken: '',
-  publicKey: "",
-  secretKey: "", // paste your backend token
-  vectorIndexName: ""
-});
+//  app: '', // your app name
+//  env: '', // your app env
+//  backendToken: '',
+//  publicKey: "",
+//  secretKey: "", // paste your backend token
+//  vectorIndexName: ""
+//});
 
 const entityName = "papers";
 
