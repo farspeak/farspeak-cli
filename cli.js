@@ -13,6 +13,18 @@ const farspeak = new Farspeak({
   backendToken: "", // paste your backend token
 });
 
+// Or this one if you want to use your Atlas
+
+// Farspeak setup
+//const farspeak = new Farspeak({
+  app: '', // your app name
+  env: '', // your app env
+  backendToken: '',
+  publicKey: "",
+  secretKey: "", // paste your backend token
+  vectorIndexName: ""
+});
+
 const entityName = "papers";
 
 // Get the current file path and directory name
