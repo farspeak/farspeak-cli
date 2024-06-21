@@ -26,6 +26,18 @@ This script uses the Farspeak library to process documents according to a templa
       backendToken: "", // paste your backend token
     });
     ```
+    If you want to use your existing MongoDB Atlas, you need to provide 3 more arguments:
+    ```
+    // Farspeak setup
+    const farspeak = new Farspeak({
+      app: 'test2', // your app name
+      env: 'dev', // your app env
+      backendToken: '',
+      publicKey: "fs-..",
+      secretKey: "fs-..", // paste your backend token
+      vectorIndexName: ".."
+    });
+    ```
 
 ## Usage
 
