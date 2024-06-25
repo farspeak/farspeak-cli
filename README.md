@@ -55,13 +55,21 @@ To use RAG with Farspeak you will need your vector index you just created in you
 - `--template <path>`: Path to the YAML file containing the instructions and template.
 - `--query <query>`: Query to inquire the entity.
 
-### Example Command
-
+### Example Command - Single File
+    JS:
     ./cli.js --filename path/to/your/file.txt --template path/to/your/template.yaml --query 'your query here'
+    SH:
+    ./cli.sh --filename path/to/your/file.txt --template path/to/your/template.yaml --query 'your query here'
+
+### Example Command - Directory
+    JS:
+    ./cli.js --directory --template path/to/your/template.yaml --query 'your query here'
+    SH:
+    ./cli.sh --directory --template path/to/your/template.yaml --query 'your query here'
     
 ### Example Output
 
-    ./cli.js --filename ./example.pdf --template ./template.yaml --query "Who is the author of this book?"
+    ./cli.sh --filename ./example.pdf --template ./template.yaml --query "Who is the author of this book?"
     {
       id: '86bv5c2a',
       title: 'Category Theory',
