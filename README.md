@@ -19,17 +19,6 @@ This script uses the Farspeak library to process documents according to a templa
     npm install
     ```
 3. Set up Farspeak
-    ```
-    // Farspeak setup
-    const farspeak = new Farspeak({
-      app: 'test2', // your app name
-      env: 'dev', // your app env
-      backendToken: '',
-      publicKey: "fs-..",
-      secretKey: "fs-..", // paste your backend token
-      vectorIndexName: ".."
-    });
-    ```
 
 To do vector search on your data you need to created a database in your Atlas and `entities` collection within.
 
