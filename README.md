@@ -15,14 +15,14 @@ This script uses the Farspeak library to process documents according to a templa
 1. Clone the repository or download the script.
 2. Install the required Node.js packages:
 
-    ```sh
-    npm install
-    ```
+```sh
+npm install
+```
 3. Set up Farspeak
 
-To do vector search on your data you need to created a database in your Atlas and `entities` collection within.
-
-Since version 1.2 there's an option to use your own db. It works with public key and secret key.
+- Entities collection.
+To do vector search on your data you need to created a database in your Atlas and `entities` collection in it.
+- Configure Farspeak.
 
 ```ts
 const farspeak = new Farspeak({
@@ -55,16 +55,16 @@ To use RAG with Farspeak you will need your vector index you just created in you
 - `--template <path>`: Path to the YAML file containing the instructions and template.
 - `--query <query>`: Query to inquire the entity.
 
+### Example Command - Talk to Data in Terminal
+
+      ./cli.sh --query 'your query here'
+
 ### Example Command - Single File
-    JS:
-    ./cli.js --filename path/to/your/file.txt --template path/to/your/template.yaml --query 'your query here'
-    SH:
-    ./cli.sh --filename path/to/your/file.txt --template path/to/your/template.yaml --query 'your query here'
+
+      ./cli.sh --filename path/to/your/file.txt --template path/to/your/template.yaml --query 'your query here'
 
 ### Example Command - Directory
-    JS:
-    ./cli.js --directory --template path/to/your/template.yaml --query 'your query here'
-    SH:
+
     ./cli.sh --directory --template path/to/your/template.yaml --query 'your query here'
     
 ### Example Output
