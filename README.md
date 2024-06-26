@@ -54,6 +54,7 @@ To use RAG with Farspeak you will need your vector index you just created in you
 - `--filename <path>`: Path to the file to be sent to Farspeak.
 - `--template <path>`: Path to the YAML file containing the instructions and template.
 - `--query <query>`: Query to inquire the entity.
+- `--directory <query>`: Path to the directory to be sent to Farspeak.
 
 ### Example Command - Talk to Data in Terminal
 
