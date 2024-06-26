@@ -56,15 +56,11 @@ To use RAG with Farspeak you will need your vector index you just created in you
 - `--query <query>`: Query to inquire the entity.
 
 ### Example Command - Single File
-    JS:
-    ./cli.js --filename path/to/your/file.txt --template path/to/your/template.yaml --query 'your query here'
-    SH:
-    ./cli.sh --filename path/to/your/file.txt --template path/to/your/template.yaml --query 'your query here'
+
+      ./cli.sh --filename path/to/your/file.txt --template path/to/your/template.yaml --query 'your query here'
 
 ### Example Command - Directory
-    JS:
-    ./cli.js --directory --template path/to/your/template.yaml --query 'your query here'
-    SH:
+
     ./cli.sh --directory --template path/to/your/template.yaml --query 'your query here'
     
 ### Example Output
