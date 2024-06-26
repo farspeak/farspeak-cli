@@ -57,19 +57,19 @@ To use RAG with Farspeak you will need your vector index you just created in you
 
 ### Example Command - Talk to Data in Terminal
 
-      ./cli.sh --query 'your query here'
+      ./run_cli.sh --query 'your query here'
 
 ### Example Command - Single File
 
-      ./cli.sh --filename path/to/your/file.txt --template path/to/your/template.yaml --query 'your query here'
+      ./run_cli.sh --filename path/to/your/file.txt --template path/to/your/template.yaml --query 'your query here'
 
 ### Example Command - Directory
 
-    ./cli.sh --directory --template path/to/your/template.yaml --query 'your query here'
+    ./run_cli.sh --directory --template path/to/your/template.yaml --query 'your query here'
     
 ### Example Output
 
-    ./cli.sh --filename ./example.pdf --template ./template.yaml --query "Who is the author of this book?"
+    ./run_cli.sh --filename ./example.pdf --template ./template.yaml --query "Who is the author of this book?"
     {
       id: '86bv5c2a',
       title: 'Category Theory',
