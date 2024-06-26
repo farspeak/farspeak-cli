@@ -24,6 +24,6 @@ fi
 for FILE in "$DIRECTORY"/*.pdf; do
   if [[ -f "$FILE" ]]; then
     echo "Processing $FILE"
-    ./cli.js --filename "$FILE" "$@"
+    ./script.js --filename "$FILE" "$@"
   fi
 done
