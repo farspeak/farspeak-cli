@@ -7,14 +7,6 @@ import fs from 'fs';
 import YAML from 'yamljs';
 import { Command } from 'commander';
 
-const farspeak = new Farspeak({
-  app: "", // your app name
-  env: "", // your app env
-  backendToken: "", // paste your backend token
-});
-
-// Or this one if you want to use your Atlas
-
 // Farspeak setup
 //const farspeak = new Farspeak({
 //  app: '', // your app name
@@ -36,21 +28,17 @@ const program = new Command();
 program
   .option('--filename <filename>', 'Path to the file to be sent to Farspeak')
   .option('--template <path>', 'Path to the YAML file containing the instructions and template')
-  .option('--query <query>', 'Path to the YAML file containing the instructions and template')
+  .option('--query <query>', 'Query string for the inquiry')
   .parse(process.argv);
 
 const options = program.opts();
 
-if (!options.filename || !options.template) {
-  console.error('Error: Both --filename and --template options are required');
-  process.exit(1);
-}
+if (options.filename && options.template) {
+  // Load the instructions and template from the YAML file
+  const templateFilePath = path.resolve(__dirname, options.template);
+  const { instructions, template } = YAML.load(templateFilePath);
 
-// Load the instructions and template from the YAML file
-const templateFilePath = path.resolve(__dirname, options.template);
-const { instructions, template } = YAML.load(templateFilePath);
-
-(async () => {
+  (async () => {
     const filePath = path.resolve(__dirname, options.filename);
 
     const doc = await farspeak
@@ -59,12 +47,24 @@ const { instructions, template } = YAML.load(templateFilePath);
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const entity = await farspeak.entity(entityName).get(doc.id);
 
+    if (options.query) {
+      farspeak
+        .entity(entityName)
+        .inquire(options.query)
+        .then(console.log);
+    }
+
+    console.log(doc);
+    console.log(entity);
+  })();
+} else if (options.query) {
+  (async () => {
     farspeak
       .entity(entityName)
       .inquire(options.query)
       .then(console.log);
-
-    console.log(doc);
-    console.log(entity);
-
-})();
+  })();
+} else {
+  console.error('Error: --query option is required if --filename and --template are not provided');
+  process.exit(1);
+}
