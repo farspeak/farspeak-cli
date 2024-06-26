@@ -18,26 +18,34 @@ This script uses the Farspeak library to process documents according to a templa
     ```sh
     npm install
     ```
-3. Provide your app / env name as well as your backend token (you'll get them from farspeak.ai)    
-    ```
-    const farspeak = new Farspeak({
-      app: "", // your app name
-      env: "", // your app env
-      backendToken: "", // paste your backend token
-    });
-    ```
-    If you want to use your existing MongoDB Atlas, you need to provide 3 more arguments:
-    ```
-    // Farspeak setup
-    const farspeak = new Farspeak({
-      app: 'test2', // your app name
-      env: 'dev', // your app env
-      backendToken: '',
-      publicKey: "fs-..",
-      secretKey: "fs-..", // paste your backend token
-      vectorIndexName: ".."
-    });
-    ```
+3. Set up Farspeak
+
+To do vector search on your data you need to created a database in your Atlas and `entities` collection within.
+
+Since version 1.2 there's an option to use your own db. It works with public key and secret key.
+
+```ts
+const farspeak = new Farspeak({
+  app: "your-app", // your app name
+  env: "dev", // your app env
+  backendToken: "43t8q1bc2eggnc", // paste your backend token
+  publicKey: "fs-pub-...",
+  secretKey: "fs-...",
+  vectorIndexName: "...",
+});
+```
+
+To create public key and secret key please follow the instructions in the dashboard.
+
+Add your Atlas url in the Settings page in the dashboard:
+
+<img width="435" alt="image" src="https://github.com/farspeak/farspeak-js/assets/170480/720d6d56-b584-45f9-9eb0-037d50f53270">
+
+Now when you send CRUD and docs/unstructured data requests, the entities will be stored in your database in the `entities` collection you created, together with the embeddings.
+
+Please follow instructions how to create vector search index for your database on our [wiki page](https://github.com/farspeak/farspeak-js/wiki/Create-Vector-Search-Index-in-Atlas).
+
+To use RAG with Farspeak you will need your vector index you just created in your Atlas account, and pass it as an argument called `vectorIndexName` to the Farspeak instance, as shown above.
 
 ## Usage
 
@@ -47,13 +55,21 @@ This script uses the Farspeak library to process documents according to a templa
 - `--template <path>`: Path to the YAML file containing the instructions and template.
 - `--query <query>`: Query to inquire the entity.
 
-### Example Command
-
+### Example Command - Single File
+    JS:
     ./cli.js --filename path/to/your/file.txt --template path/to/your/template.yaml --query 'your query here'
+    SH:
+    ./cli.sh --filename path/to/your/file.txt --template path/to/your/template.yaml --query 'your query here'
+
+### Example Command - Directory
+    JS:
+    ./cli.js --directory --template path/to/your/template.yaml --query 'your query here'
+    SH:
+    ./cli.sh --directory --template path/to/your/template.yaml --query 'your query here'
     
 ### Example Output
 
-    ./cli.js --filename ./example.pdf --template ./template.yaml --query "Who is the author of this book?"
+    ./cli.sh --filename ./example.pdf --template ./template.yaml --query "Who is the author of this book?"
     {
       id: '86bv5c2a',
       title: 'Category Theory',
