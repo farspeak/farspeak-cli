@@ -17,6 +17,7 @@ import { Command } from 'commander';
 //  vectorIndexName: ""
 //});
 
+// Pick your entity name
 const entityName = "papers";
 
 // Get the current file path and directory name
