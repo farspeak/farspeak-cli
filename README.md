@@ -55,6 +55,7 @@ To use RAG with Farspeak you will need your vector index you just created in you
 - `--template <path>`: Path to the YAML file containing the instructions and template.
 - `--query <query>`: Query to inquire the entity.
 - `--directory <path>`: Path to the directory to be sent to Farspeak.
+- `--url <url>`: URL to a document.
 
 ### Example Command - Talk to Data in Terminal
 
@@ -67,6 +68,10 @@ To use RAG with Farspeak you will need your vector index you just created in you
 ### Example Command - Directory
 
     ./run_cli.sh --directory --template path/to/your/template.yaml --query 'your query here'
+
+### Example Command - URL (Experimental currently, only in script.js)
+
+    ./script.js --url --template path/to/your/template.yaml --query 'your query here'
     
 ### Example Output
 
