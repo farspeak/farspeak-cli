@@ -69,7 +69,7 @@ To use RAG with Farspeak you will need your vector index you just created in you
 
     ./run_cli.sh --directory --template path/to/your/template.yaml --query 'your query here'
 
-### Example Command - URL (Experimental currently, only in script.js)
+### Example Command - URL
 
     ./run_cli.sh --url --template path/to/your/template.yaml --query 'your query here'
     
