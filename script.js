@@ -31,6 +31,7 @@ program
   .option('--template <path>', 'Path to the YAML file containing the instructions and template')
   .option('--query <query>', 'Query string for the inquiry')
   .option('--url <url>', 'URL of the document to be processed by Farspeak')
+  .option('--directory <directory>', 'Path to the directory to be processed by Farspeak')
   .parse(process.argv);
 
 const options = program.opts();
@@ -83,6 +84,31 @@ if (options.filename && options.template) {
     console.log(doc);
     console.log(entity);
   })();
+} else if (options.directory && options.template) {
+  // Load the instructions and template from the YAML file
+  const templateFilePath = path.resolve(__dirname, options.template);
+  const { instructions, template } = YAML.load(templateFilePath);
+
+  (async () => {
+    const dirPath = path.resolve(__dirname, options.directory);
+    console.log("path: " + dirPath);
+
+    const doc = await farspeak
+      .entity(entityName)
+      .fromDirectory({ directoryPath: dirPath, instructions, template, recursive: true });
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const entity = await farspeak.entity(entityName).get(doc.id);
+
+    if (options.query) {
+      farspeak
+        .entity(entityName)
+        .inquire(options.query)
+        .then(console.log);
+    }
+
+    console.log(doc);
+    console.log(entity);
+  })();
 } else if (options.query) {
   (async () => {
     farspeak
@@ -91,6 +117,6 @@ if (options.filename && options.template) {
       .then(console.log);
   })();
 } else {
-  console.error('Error: --query option is required if --filename and --template or --url and --template are not provided');
+  console.error('Error: --query option is required if --filename and --template or --url and --template or --directory and --template are not provided');
   process.exit(1);
 }
