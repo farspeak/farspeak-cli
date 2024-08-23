@@ -1,6 +1,6 @@
 # Farspeak CLI Script
 
-This script uses the Farspeak library to process documents according to a template specified in a YAML file. It allows you to send a file to Farspeak and retrieve and inquire entities based on the specified instructions and template.
+This script uses the Farspeak library to process documents according to a template specified in a YAML file. 
 
 ## Prerequisites
 
